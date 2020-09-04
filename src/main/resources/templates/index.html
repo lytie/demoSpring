@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Bootstrap Example</title>
+<meta charset="utf-8">
+
+</head>
+<body>
+
+
+
+
+	<div>
+		<h2>List People</h2>
+		<form action="#" th:action="@{/person/search}" method="get">
+			<input type="search" name="term" placeholder="Search by name ..." />
+			<button type="submit">Search</button>
+			<a href="" th:href="@{/person/add}">Create New Person </a>
+
+		</form>
+		<br>
+		<table border="1">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Age</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="person : ${people}">
+
+					<td th:text="${person.id}"></td>
+					<td th:text="${person.name}"></td>
+					<td th:text="${person.last}"></td>
+					<td th:text="${person.age}"></td>
+					<td><a href="#" th:href="@{/person/update/} + ${person.id}">Edit</a>
+						<a href="#" th:href="@{/person/delete/} + ${person.id}">Delete</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+
+
+
+</body>
+</html>
